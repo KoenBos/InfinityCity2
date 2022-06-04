@@ -6,29 +6,55 @@ using UnityEngine.SceneManagement;
 
 public class Title_Screen_Script : MonoBehaviour
 {
-    public GameObject Panel_Afsluiten;
+    public Animator animator;
 
     void Start()
     {
-        if (Panel_Afsluiten != null)
-        {
-            Panel_Afsluiten.SetActive(false);
-        }
+        animator = GetComponent<Animator>();
+
     }
 
     public void ExitApplication()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif
     }
 
-    public void loadlevel(string level)
+    public void LoadLevel(string level)
     {
         SceneManager.LoadScene(level);
 
+    }
+    public void GoToCredits()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("GoCredits", true);
+        }
+    }
+    public void ExitCredits()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("GoCredits", false);
+        }
+    }
+    public void GoToOptions()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("GoOptions", true);
+        }
+    }
+    public void ExitOptions()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("GoOptions", false);
+        }
     }
 }
 
