@@ -6,7 +6,9 @@ using UnityEngine.Events;
 
 public class PlayerInventory : MonoBehaviour
 {
+   [SerializeField]
    public int NumberOfEels { get; private set; }
+   
 
    public UnityEvent<PlayerInventory> OnEelCollected;
    
@@ -25,6 +27,7 @@ public class PlayerInventory : MonoBehaviour
        {
        NumberOfEels--;
        OnEelCollected.Invoke(this);
+       
        }
    }
 
