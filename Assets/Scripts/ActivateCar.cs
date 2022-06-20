@@ -24,7 +24,7 @@ public class ActivateCar : MonoBehaviour
             Inside();
             PlayerInCar = true;
         }
-        if (Input.GetKeyDown(KeyCode.F) && PlayerInCar == true)
+        if (Input.GetKeyDown(KeyCode.G) && PlayerInCar == true)
         {
             Outside();
             PlayerInCar = false;
