@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Emiel.unity
     guid: 13ee60a50c35f0a4a94f17fe4c97604c
+  - enabled: 1
+    path: Assets/Scenes/Joas.unity
+    guid: 3eeb0b71767a62749bd951ee5a158b6e
   m_configObjects: {}
