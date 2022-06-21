@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 //using UnityEngine.UI;
 
-public class Title_Screen_Script : MonoBehaviour
+public class TitleScreen : MonoBehaviour
 {
     public Animator animator;
 
