@@ -9,6 +9,7 @@ public class PlayerInventory : MonoBehaviour
    [SerializeField]
    public int NumberOfEels { get; private set; }
    
+   public GameObject particleSystem;
 
    public UnityEvent<PlayerInventory> OnEelCollected;
    
@@ -27,7 +28,11 @@ public class PlayerInventory : MonoBehaviour
        {
        NumberOfEels--;
        OnEelCollected.Invoke(this);
-       
+       particleSystem.SetActive(true);
+       }
+       else 
+       {
+        particleSystem.SetActive(false);
        }
    }
 
