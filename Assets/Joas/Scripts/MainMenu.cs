@@ -3,24 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Mainmenu : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     private Animator animator;
-    
+    public GameObject player;
+    public bool freezePlayer;
     void Start()
     {
         //Set the animator in the inspector
         animator.GetComponent<Animator>();
+        player.GetComponent<GameObject>();
     }
 
-    //This function is for loading another scene via a button, you can change this setting in the inspector.
+     void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && freezePlayer == false)
+        {
+            Inside();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && freezePlayer == true)
+        {
+            Outside();
+        }
+    }
+    public void Inside()
+    {
+        StartCoroutine(InsideFunction());
+    }
+
+    IEnumerator InsideFunction()
+    {
+        yield return new WaitForSeconds(0.01f);
+        player.SetActive(false);
+        freezePlayer = true;
+
+    }
+    public void Outside()
+    {
+        StartCoroutine(OutsideFunction());
+    }
+    IEnumerator OutsideFunction()
+    {
+        yield return new WaitForSeconds(0.01f);
+        player.SetActive(true);
+        freezePlayer = false;
+
+    }
+
     public void LoadLevel(string level)
     {
         SceneManager.LoadScene(level);
     }
 
-    //This function opens the panel for the main menu, this will pause your game.
-    //if the esc. key is pressed and if the animator is active, then the animator will set the given Bool to true. This action can be performed by the press of a button.
+    
     public void OpenMenu()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -28,6 +63,7 @@ public class Mainmenu : MonoBehaviour
             if (animator != null)
             {
                 animator.SetBool("OpenMenu", true);
+                
             }
         }
     }
@@ -38,8 +74,6 @@ public class Mainmenu : MonoBehaviour
             animator.SetBool("OpenMenu", false);
         }
     }
-
-    //If the animator is active, then the animator will set the given Bool to true. This action can be performed by the press of a button.
     public void OpenOptions()
     {   
         if (animator != null)
