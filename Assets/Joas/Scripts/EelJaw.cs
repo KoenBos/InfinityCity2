@@ -36,7 +36,6 @@ public class EelJaw : MonoBehaviour
     //When you press Q, you initiate the Eel Jaws' grapple function
     private void Grapple()
     {
-        RaycastHit hit;
         
     }
      //When you let go of Q, you stop using the Eel Jaws' grapple function
