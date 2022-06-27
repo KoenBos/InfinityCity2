@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 
 public class PlayerInventory : MonoBehaviour
@@ -12,14 +13,24 @@ public class PlayerInventory : MonoBehaviour
    public GameObject particleSystem;
 
    public UnityEvent<PlayerInventory> OnEelCollected;
+
+   public int health;
+
+   public Slider slider;
    
   
-
+   
 
    public void EelCollected()
    {
        NumberOfEels++;
        OnEelCollected.Invoke(this);
+   }
+
+   public void OnDamaged()
+   {
+       health--;
+       slider.value = health;
    }
 
    public void EelDesposited()

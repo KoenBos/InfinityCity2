@@ -22,10 +22,13 @@ public class CheckParticles : MonoBehaviour
   void Update()
   {
    
-   if (ps.isEmitting)
+   if (ps.particleCount > 1)
    {
+     for(int i = 0; i < ps.particleCount; i++)
+        {
+           OnThunder.Invoke(this);
+        }
     
-    OnThunder.Invoke(this);
    }
   
   }
