@@ -17,8 +17,15 @@ public class PlayerInventory : MonoBehaviour
    public int health;
 
    public Slider slider;
-   
-  
+
+   public Gradient gradient;
+
+   public Image fill;
+
+   void Awake()
+    {
+        fill.color = gradient.Evaluate(1f);
+    }
    
 
    public void EelCollected()
@@ -30,6 +37,7 @@ public class PlayerInventory : MonoBehaviour
    public void OnDamaged()
    {
        health--;
+       fill.color = gradient.Evaluate(slider.normalizedValue);
        slider.value = health;
    }
 
