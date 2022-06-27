@@ -11,19 +11,15 @@ public class GiantEelAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public float health;
-
-    
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
+    public GameObject thunder;
+    public GameObject walkdust;
 
-   
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
@@ -48,6 +44,9 @@ public class GiantEelAI : MonoBehaviour
     {
         if (!walkPointSet) SearchWalkPoint();
 
+        thunder.SetActive(false);
+        walkdust.SetActive(false);
+
         if (walkPointSet)
             agent.SetDestination(walkPoint);
 
@@ -71,6 +70,8 @@ public class GiantEelAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        thunder.SetActive(false);
+        walkdust.SetActive(true);
     }
 
     private void AttackPlayer()
@@ -85,9 +86,8 @@ public class GiantEelAI : MonoBehaviour
 
             // attack here
            
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+           thunder.SetActive(true);
+           walkdust.SetActive(true);
            
 
             alreadyAttacked = true;
@@ -99,23 +99,6 @@ public class GiantEelAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
-    }
+   
 }
 
