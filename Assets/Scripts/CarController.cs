@@ -39,8 +39,8 @@ public class CarController : MonoBehaviour
 
     private void HandleMotor()
     {
-        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
-        frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+        rearLeftWheelCollider.motorTorque = verticalInput * motorForce;
+        rearRightWheelCollider.motorTorque = verticalInput * motorForce;
 
         breakForce = isBreaking ? 30000 : 0f;
         if (isBreaking)
@@ -67,12 +67,15 @@ public class CarController : MonoBehaviour
     private void HandleSteering()
     {
         currentsteerAngle = maxSteeringAngle * horizontalInput;
-        rearLeftWheelCollider.steerAngle = currentsteerAngle;
-        rearRightWheelCollider.steerAngle = currentsteerAngle;
+        frontLeftWheelCollider.steerAngle = currentsteerAngle;
+        frontRightWheelCollider.steerAngle = currentsteerAngle;
     }
 
     private void UpdateWheels()
     {
+        // frontLeftWheelTransform.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+        // frontRightWheelTransform.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+
         UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
         UpdateSingleWheel(frontRightWheelCollider, frontRightWheelTransform);
         UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);

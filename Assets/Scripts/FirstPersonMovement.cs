@@ -11,12 +11,22 @@ public class FirstPersonMovement : MonoBehaviour
     public float runSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
 
+    Vector3 velocity;
+
+    public bool isGrounded;
+
     Rigidbody rigidbody1;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
-    //car
-    protected CarController carController;
+    void update()
+    {
+
+        if (isGrounded == false)
+        {
+            velocity.y = -5f;
+        }
+    }
 
     void Awake()
     {
@@ -27,7 +37,21 @@ public class FirstPersonMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Update IsRunning from input.
-        IsRunning = canRun && Input.GetKey(runningKey);
+        IsRunning = canRun && Input.GetKey(runningKey) && Input.GetKey("w");
+
+        if (Input.GetKey(runningKey) && Input.GetKey("w") && Input.GetKey("a"))
+        {
+            canRun = false;
+        }
+        else if (Input.GetKey(runningKey) && Input.GetKey("w") && Input.GetKey("d"))
+        {
+            canRun = false;
+        }
+        else
+        {
+            canRun = true;
+        }
+
 
         // Get targetMovingSpeed.
         float targetMovingSpeed = IsRunning ? runSpeed : speed;
@@ -42,14 +66,5 @@ public class FirstPersonMovement : MonoBehaviour
         // Apply movement.
         rigidbody1.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody1.velocity.y, targetVelocity.y);
     }
-    void update()
-    {
-        if (Input.GetKey(runningKey) && !Input.GetKeyDown(KeyCode.S))
-        {
-
-        }
-
-    }
-
 
 }
