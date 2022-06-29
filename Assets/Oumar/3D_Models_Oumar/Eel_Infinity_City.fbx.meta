@@ -3,7 +3,27 @@ guid: 5534a295dfb3b4b47a5bed6f1dfcad4e
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: -876546973899608171, guid: 286932e0ff5aa364994c0aa3877ffc76, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: -876546973899608171, guid: 30970e77a82d6bb469a643adff248288, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: -876546973899608171, guid: 29a9d28507c34b945a4378c1d7de9264, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: -8813375970364409492, guid: 4e3ca5d2e27d0364b8a8c4141e6d9df4, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -34,7 +54,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
