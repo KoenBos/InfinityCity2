@@ -348,7 +348,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -7508,9 +7508,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 25000
+  m_MaxValue: 100000
   m_WholeNumbers: 0
-  m_Value: 25000
+  m_Value: 100000
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8842,7 +8842,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4874126678125670354, guid: 335cca32a4685ab4ea33d24e4e1bde94, type: 3}
+  - {fileID: 880774007180850119, guid: 30970e77a82d6bb469a643adff248288, type: 3}
   - {fileID: -6922793697723135513, guid: 2c5ca201e492e4148a8abdee2b7a93a6, type: 3}
   - {fileID: 4874126678125670354, guid: 2f9acde5dc5e75a418abe2ae99d4fdea, type: 3}
   m_StaticBatchInfo:
@@ -8938,7 +8938,7 @@ MonoBehaviour:
   thunder: {fileID: 119311824}
   walkdust: {fileID: 1931488532}
   sightRange: 100
-  attackRange: 40
+  attackRange: 30
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &1894394239
@@ -22873,7 +22873,7 @@ PrefabInstance:
       objectReference: {fileID: 1323159890}
     - target: {fileID: 3416187682686204624, guid: 5b781e6ca2ab06046865572dacb8f636, type: 3}
       propertyPath: health
-      value: 25000
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 3416187682686204624, guid: 5b781e6ca2ab06046865572dacb8f636, type: 3}
       propertyPath: slider
