@@ -8,16 +8,12 @@ public class MenuActivation : MonoBehaviour
     private Animator animator;
     public GameObject playerController;
     public GameObject menuPanel;
-    public GameObject eeltext;
-    public GameObject eelimage;
-    public GameObject interactorCursor;
+    public GameObject eelUI;
     public bool freezePlayer;
 
     void Start()
     {
         animator.GetComponent<Animator>();
-        playerController.GetComponent<GameObject>();
-        menuPanel.GetComponent<GameObject>();
     }
 
      void Update()
@@ -25,13 +21,10 @@ public class MenuActivation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T) && freezePlayer == false)
         {
             Inside();
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
         }
         if (Input.GetKeyDown(KeyCode.T) && freezePlayer == true)
         {
             Outside();
-            Cursor.lockState = CursorLockMode.Locked;
         }
     }
     public void Inside()
@@ -43,11 +36,11 @@ public class MenuActivation : MonoBehaviour
     {
         yield return new WaitForSeconds(0.01f);
         playerController.SetActive(false);
-        eeltext.SetActive(false);
-        eelimage.SetActive(false);
-        interactorCursor.SetActive(false);
+        eelUI.SetActive(false);
         menuPanel.SetActive(true);
         freezePlayer = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
     public void Outside()
     {
@@ -57,12 +50,21 @@ public class MenuActivation : MonoBehaviour
     {
         yield return new WaitForSeconds(0.01f);
         playerController.SetActive(true);
-        eeltext.SetActive(true);
-        eelimage.SetActive(true);
-        interactorCursor.SetActive(true);
+        eelUI.SetActive(true);
         menuPanel.SetActive(false);
         freezePlayer = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
+    }
+    public void ContinueGame()
+    {   
+            playerController.SetActive(true);
+            eelUI.SetActive(true);
+            menuPanel.SetActive(false);
+            freezePlayer = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
     }
 
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 
 public class PlayerInventory : MonoBehaviour
@@ -12,14 +13,33 @@ public class PlayerInventory : MonoBehaviour
    public GameObject particleSystem;
 
    public UnityEvent<PlayerInventory> OnEelCollected;
-   
-  
 
+   public int health;
+
+   public Slider slider;
+
+   public Gradient gradient;
+
+   public Image fill;
+
+   void Awake()
+    {
+        fill.color = gradient.Evaluate(1f);
+        
+    }
+   
 
    public void EelCollected()
    {
        NumberOfEels++;
        OnEelCollected.Invoke(this);
+   }
+
+   public void OnDamaged()
+   {
+       health--;
+       slider.value = health;
+       fill.color = gradient.Evaluate(slider.normalizedValue);
    }
 
    public void EelDesposited()
