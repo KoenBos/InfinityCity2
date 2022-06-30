@@ -25,6 +25,7 @@ public class PlayerInventory : MonoBehaviour
    void Awake()
     {
         fill.color = gradient.Evaluate(1f);
+        
     }
    
 
@@ -37,8 +38,8 @@ public class PlayerInventory : MonoBehaviour
    public void OnDamaged()
    {
        health--;
-       fill.color = gradient.Evaluate(slider.normalizedValue);
        slider.value = health;
+       fill.color = gradient.Evaluate(slider.normalizedValue);
    }
 
    public void EelDesposited()
