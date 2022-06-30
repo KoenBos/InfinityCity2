@@ -7,6 +7,7 @@ public class MenuActivation : MonoBehaviour
 {
     private Animator animator;
     public GameObject playerController;
+    public GameObject playerLook;
     public GameObject menuPanel;
     public GameObject eelUI;
     public bool freezePlayer;
@@ -16,7 +17,7 @@ public class MenuActivation : MonoBehaviour
         animator.GetComponent<Animator>();
     }
 
-     void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.T) && freezePlayer == false)
         {
@@ -35,7 +36,8 @@ public class MenuActivation : MonoBehaviour
     IEnumerator InsideFunction()
     {
         yield return new WaitForSeconds(0.01f);
-        playerController.SetActive(false);
+        // playerController.GetComponent<FirstPersonLook>().enabled = false;
+        // playerController.GetComponent<FirstPersonMovement>().enabled = false;
         eelUI.SetActive(false);
         menuPanel.SetActive(true);
         freezePlayer = true;
@@ -49,7 +51,8 @@ public class MenuActivation : MonoBehaviour
     IEnumerator OutsideFunction()
     {
         yield return new WaitForSeconds(0.01f);
-        playerController.SetActive(true);
+        // playerController.GetComponent<FirstPersonLook>().enabled = true;
+        // playerController.GetComponent<FirstPersonMovement>().enabled = true;
         eelUI.SetActive(true);
         menuPanel.SetActive(false);
         freezePlayer = false;
@@ -58,13 +61,13 @@ public class MenuActivation : MonoBehaviour
 
     }
     public void ContinueGame()
-    {   
-            playerController.SetActive(true);
-            eelUI.SetActive(true);
-            menuPanel.SetActive(false);
-            freezePlayer = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+    {
+        playerController.SetActive(true);
+        eelUI.SetActive(true);
+        menuPanel.SetActive(false);
+        freezePlayer = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
 }

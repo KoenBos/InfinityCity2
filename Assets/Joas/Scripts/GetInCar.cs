@@ -7,10 +7,19 @@ public class GetInCar : MonoBehaviour
 {
     public GameObject raycar;
 
+    public GameObject Car;
+
     public Camera cam;
     public GameObject player;
 
-    public bool PlayerInCar = false;
+
+    // Vergeet niet vraag om een nieuwe gameobject aan te maken.
+    //
+
+    // Data of RayCast
+    RaycastHit hitData;
+
+    public bool PlayerInCar { get; set; }
 
     [SerializeField] private Material highlightMaterial;
 
@@ -18,22 +27,29 @@ public class GetInCar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerInCar = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && PlayerInCar == false)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            Inside();
-        }
-        if (Input.GetKeyDown(KeyCode.F) && PlayerInCar == true)
-        {
-            Outside();
+
+            if (!PlayerInCar)
+            {
+                Inside();
+            }
+            else
+            {
+                Outside();
+            }
         }
 
-
-        RayCastForPlayer();
+        if (!PlayerInCar)
+        {
+            RayCastForPlayer();
+        }
     }
     void RayCastForPlayer()
     {
@@ -41,9 +57,6 @@ public class GetInCar : MonoBehaviour
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         // Gets a Game Object reference from its Transform
         Debug.DrawRay(ray.origin, ray.direction * 3);
-
-        //container hit data
-        RaycastHit hitData;
 
         // if Ray hit out hitdata
         if (Physics.Raycast(ray, out hitData))
@@ -57,33 +70,40 @@ public class GetInCar : MonoBehaviour
 
     public void Inside()
     {
-        StartCoroutine(InsideFunction());
-
-    }
-    public void Outside()
-    {
-        StartCoroutine(OutsideFunction());
-    }
-
-    IEnumerator InsideFunction()
-    {
-        yield return new WaitForSeconds(0.01f);
-        raycar.GetComponent<CarController>().enabled = true;
-        yield return new WaitForSeconds(0.01f);
+        // StartCoroutine(InsideFunction());
         cam.enabled = true;
         player.SetActive(false);
         PlayerInCar = true;
     }
-
-    IEnumerator OutsideFunction()
+    public void Outside()
     {
-        yield return new WaitForSeconds(0.01f);
-        player.transform.position = raycar.transform.position;
-        yield return new WaitForSeconds(0.01f);
-        raycar.GetComponent<CarController>().enabled = false;
+        // StartCoroutine(OutsideFunction());
         cam.enabled = false;
         player.SetActive(true);
         PlayerInCar = false;
+        player.transform.position = raycar.transform.position;
 
     }
+
+    // IEnumerator InsideFunction()
+    // {
+    //     yield return new WaitForSeconds(0.01f);
+    //     raycar.GetComponent<CarController>().enabled = true;
+    //     yield return new WaitForSeconds(0.01f);
+    //     cam.enabled = true;
+    //     player.SetActive(false);
+    //     PlayerInCar = true;
+    // }
+
+    // IEnumerator OutsideFunction()
+    // {
+    //     yield return new WaitForSeconds(0.01f);
+    //     player.transform.position = raycar.transform.position;
+    //     yield return new WaitForSeconds(0.01f);
+    //     raycar.GetComponent<CarController>().enabled = false;
+    //     cam.enabled = false;
+    //     player.SetActive(true);
+    //     PlayerInCar = false;
+
+    // }
 }
