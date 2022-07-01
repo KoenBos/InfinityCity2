@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class MenuActivation : MonoBehaviour
+using UnityEngine.UI;
+public class Menu : MonoBehaviour
 {
-    private Animator animator;
     public GameObject playerController;
     public GameObject menuPanel;
+    public GameObject settingsPanel;
     public GameObject eelUI;
     public bool freezePlayer;
+    public Animator animator;
+
 
     void Start()
-    {
-        animator.GetComponent<Animator>();
+    { 
+        freezePlayer = false;
+        settingsPanel.SetActive(false);
+        menuPanel.SetActive(false);
     }
-
      void Update()
     {
         if (Input.GetKeyDown(KeyCode.T) && freezePlayer == false)
@@ -59,12 +62,40 @@ public class MenuActivation : MonoBehaviour
     }
     public void ContinueGame()
     {   
-            playerController.SetActive(true);
-            eelUI.SetActive(true);
-            menuPanel.SetActive(false);
-            freezePlayer = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+        playerController.SetActive(true);
+        eelUI.SetActive(true);
+        menuPanel.SetActive(false);
+        freezePlayer = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
+    public void LoadLevel(string level)
+    {
+        SceneManager.LoadScene(level);
+    }
+    
+    public void ExitApplication()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
+     public void OpenOptions()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("OpenOptions", true);
+        }
+    }
+    public void ExitOptions()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("OpenOptions", false);
+        }
+    }
+
 
 }
