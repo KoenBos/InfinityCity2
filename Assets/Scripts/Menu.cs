@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuActivation : MonoBehaviour
+public class Menu : MonoBehaviour
 {
     private Animator animator;
     public GameObject playerController;
@@ -36,7 +36,8 @@ public class MenuActivation : MonoBehaviour
     IEnumerator InsideFunction()
     {
         yield return new WaitForSeconds(0.01f);
-        playerController.SetActive(false);
+        // playerController.GetComponent<FirstPersonLook>().enabled = false;
+        // playerController.GetComponent<FirstPersonMovement>().enabled = false;
         eelUI.SetActive(false);
         menuPanel.SetActive(true);
         freezePlayer = true;
@@ -50,7 +51,8 @@ public class MenuActivation : MonoBehaviour
     IEnumerator OutsideFunction()
     {
         yield return new WaitForSeconds(0.01f);
-        playerController.SetActive(true);
+        // playerController.GetComponent<FirstPersonLook>().enabled = true;
+        // playerController.GetComponent<FirstPersonMovement>().enabled = true;
         eelUI.SetActive(true);
         menuPanel.SetActive(false);
         freezePlayer = false;
