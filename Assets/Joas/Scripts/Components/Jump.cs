@@ -29,7 +29,7 @@ public class Jump : MonoBehaviour
         {
             rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
             Jumped?.Invoke();
-            GetComponent<CarController>().enabled = false;
+            // GetComponent<CarController>().enabled = false;
         }
     }
 }

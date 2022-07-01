@@ -8,6 +8,9 @@ public class CarController : MonoBehaviour
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
 
+    GetInCar getincar = new GetInCar();
+
+
     private float horizontalInput;
     private float verticalInput;
     private float currentsteerAngle;
@@ -31,7 +34,10 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetInput();
+        if (getincar.PlayerInCar)
+        {
+            GetInput();
+        }
         HandleMotor();
         HandleSteering();
         UpdateWheels();
