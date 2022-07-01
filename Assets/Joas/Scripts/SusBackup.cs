@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-public class Backup : MonoBehaviour
+public class SusBackup : MonoBehaviour
 {
     public GameObject playerController;
     public GameObject playerLook;
