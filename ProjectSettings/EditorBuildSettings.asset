@@ -17,7 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Joas.unity
     guid: 3eeb0b71767a62749bd951ee5a158b6e
-  - enabled: 1
-    path: Assets/Scenes/Menu_Screen.unity
-    guid: b1d29e4e1d2ab454bbe2822310ca2f3b
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scenes/SettingsDump.unity
+    guid: bbe6b73873d708043b90a9dd2b202a70
   m_configObjects: {}
