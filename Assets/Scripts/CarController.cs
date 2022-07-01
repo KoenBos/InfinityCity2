@@ -8,14 +8,14 @@ public class CarController : MonoBehaviour
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
 
-    GetInCar getincar = new GetInCar();
-
 
     private float horizontalInput;
     private float verticalInput;
     private float currentsteerAngle;
     private float currentBreakForce;
     private bool isBreaking;
+
+    private GetInCar getInCarScript;
 
     [SerializeField] private float motorForce;
     [SerializeField] private float breakForce;
@@ -31,10 +31,15 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
 
+    private void Start()
+    {
+        getInCarScript = GameObject.Find("script-object").GetComponent<GetInCar>();
+
+    }
 
     private void FixedUpdate()
     {
-        if (getincar.PlayerInCar)
+        if (getInCarScript.PlayerInCar)
         {
             GetInput();
         }

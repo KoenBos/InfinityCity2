@@ -13,21 +13,23 @@ public class GetInCar : MonoBehaviour
     public GameObject player;
 
 
+    // this will save the ray car.
+    public GameObject copyCar;
+
+
     // Vergeet niet vraag om een nieuwe gameobject aan te maken.
     //
 
     // Data of RayCast
     RaycastHit hitData;
 
-    public bool PlayerInCar { get; set; }
-
-    [SerializeField] private Material highlightMaterial;
+    public bool PlayerInCar;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerInCar = true;
+        PlayerInCar = false;
     }
 
     // Update is called once per frame
@@ -39,17 +41,20 @@ public class GetInCar : MonoBehaviour
             if (!PlayerInCar)
             {
                 Inside();
+
             }
             else
             {
                 Outside();
             }
         }
+        // if (!PlayerInCar)
+        // {
+        RayCastForPlayer();
+        // }
 
-        if (!PlayerInCar)
-        {
-            RayCastForPlayer();
-        }
+        // copyCar = GameObject.Instantiate(raycar);
+
     }
     void RayCastForPlayer()
     {
@@ -74,6 +79,7 @@ public class GetInCar : MonoBehaviour
         cam.enabled = true;
         player.SetActive(false);
         PlayerInCar = true;
+        raycar.GetComponent<CarController>().enabled = true;
     }
     public void Outside()
     {
