@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuActivation : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
     public GameObject playerController;
     public GameObject playerLook;
     public GameObject menuPanel;
@@ -26,6 +26,7 @@ public class MenuActivation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T) && freezePlayer == true)
         {
             Outside();
+            ExitOptions();
         }
     }
     public void Inside()
@@ -86,6 +87,7 @@ public class MenuActivation : MonoBehaviour
         {
             animator.SetBool("OpenOptions", false);
         }
+        
     }
     public void ExitApplication()
     {

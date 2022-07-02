@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
     public GameObject playerController;
     public GameObject playerLook;
     public GameObject menuPanel;
