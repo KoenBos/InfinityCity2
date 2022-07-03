@@ -418,14 +418,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 135579058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 897fd2f531e053c4eb153c8da4611944, type: 3}
+  m_Script: {fileID: 11500000, guid: fb9cee1fa57700e42b7cc3d83a7f7af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 135579065}
   playerController: {fileID: 68616074}
   playerLook: {fileID: 1240674926}
   menuPanel: {fileID: 1802367956}
-  eelUI: {fileID: 247448497}
+  eelUI: {fileID: 296163515}
   freezePlayer: 0
 --- !u!95 &135579065
 Animator:
@@ -2855,7 +2855,7 @@ GameObject:
   - component: {fileID: 1280362240}
   - component: {fileID: 1280362239}
   m_Layer: 5
-  m_Name: Resume_Game
+  m_Name: Resume Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9046,7 +9046,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Resume Game
+  m_Text: Resume Tutorial
 --- !u!222 &1688501752
 CanvasRenderer:
   m_ObjectHideFlags: 0

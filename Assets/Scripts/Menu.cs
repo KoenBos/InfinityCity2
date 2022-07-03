@@ -26,6 +26,7 @@ public class Menu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T) && freezePlayer == true)
         {
             Outside();
+            ExitOptions();
         }
     }
     public void Inside()
@@ -36,8 +37,7 @@ public class Menu : MonoBehaviour
     IEnumerator InsideFunction()
     {
         yield return new WaitForSeconds(0.01f);
-        // playerController.GetComponent<FirstPersonLook>().enabled = false;
-        // playerController.GetComponent<FirstPersonMovement>().enabled = false;
+        playerController.SetActive(false);
         eelUI.SetActive(false);
         menuPanel.SetActive(true);
         freezePlayer = true;
@@ -51,8 +51,7 @@ public class Menu : MonoBehaviour
     IEnumerator OutsideFunction()
     {
         yield return new WaitForSeconds(0.01f);
-        // playerController.GetComponent<FirstPersonLook>().enabled = true;
-        // playerController.GetComponent<FirstPersonMovement>().enabled = true;
+        playerController.SetActive(true);
         eelUI.SetActive(true);
         menuPanel.SetActive(false);
         freezePlayer = false;
@@ -88,6 +87,7 @@ public class Menu : MonoBehaviour
         {
             animator.SetBool("OpenOptions", false);
         }
+        
     }
     public void ExitApplication()
     {
