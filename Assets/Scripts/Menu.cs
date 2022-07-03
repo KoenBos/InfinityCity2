@@ -19,11 +19,11 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && freezePlayer == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && freezePlayer == false)
         {
             Inside();
         }
-        if (Input.GetKeyDown(KeyCode.T) && freezePlayer == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && freezePlayer == true)
         {
             Outside();
             ExitOptions();

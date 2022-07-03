@@ -2732,9 +2732,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hier komt dus een sussy hype splashscreen alleen dat is er nu nog niet
-    dus we wachten even en hierna verschijnt dan het Titelscherm. Tja het is nu gewoon
-    eventjes stil maar dan komt hier een coole splashscreen
+  m_Text: 'LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM
+    LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM
+    IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM '
 --- !u!222 &1136536047
 CanvasRenderer:
   m_ObjectHideFlags: 0
