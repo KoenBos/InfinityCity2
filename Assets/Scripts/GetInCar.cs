@@ -58,6 +58,7 @@ public class GetInCar : MonoBehaviour
         // copyCar = GameObject.Instantiate(raycar);
 
     }
+
     void RayCastForPlayer()
     {
         // Creates a Ray from the center of the viewport
