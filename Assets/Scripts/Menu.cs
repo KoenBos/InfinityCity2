@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuActivation : MonoBehaviour
+public class Menu : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
     public GameObject playerController;
     public GameObject playerLook;
     public GameObject menuPanel;
@@ -19,13 +19,14 @@ public class MenuActivation : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && freezePlayer == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && freezePlayer == false)
         {
             Inside();
         }
-        if (Input.GetKeyDown(KeyCode.T) && freezePlayer == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && freezePlayer == true)
         {
             Outside();
+            ExitOptions();
         }
     }
     public void Inside()
@@ -36,8 +37,7 @@ public class MenuActivation : MonoBehaviour
     IEnumerator InsideFunction()
     {
         yield return new WaitForSeconds(0.01f);
-        // playerController.GetComponent<FirstPersonLook>().enabled = false;
-        // playerController.GetComponent<FirstPersonMovement>().enabled = false;
+        playerController.SetActive(false);
         eelUI.SetActive(false);
         menuPanel.SetActive(true);
         freezePlayer = true;
@@ -51,8 +51,7 @@ public class MenuActivation : MonoBehaviour
     IEnumerator OutsideFunction()
     {
         yield return new WaitForSeconds(0.01f);
-        // playerController.GetComponent<FirstPersonLook>().enabled = true;
-        // playerController.GetComponent<FirstPersonMovement>().enabled = true;
+        playerController.SetActive(true);
         eelUI.SetActive(true);
         menuPanel.SetActive(false);
         freezePlayer = false;
@@ -69,5 +68,35 @@ public class MenuActivation : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+    public void LoadLevel(string level)
+    {
+        SceneManager.LoadScene(level);
+
+    }
+    
+    public void OpenOptions()
+    {   
+        if (animator != null)
+        {
+            animator.SetBool("OpenOptions", true);
+        }
+    }
+    public void ExitOptions()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("OpenOptions", false);
+        }
+        
+    }
+    public void ExitApplication()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
 
 }
+

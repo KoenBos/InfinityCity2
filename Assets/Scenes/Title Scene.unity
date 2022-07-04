@@ -1187,7 +1187,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Joas
+          m_StringArgument: Tutorial 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &594268264
@@ -2501,7 +2501,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1029780916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec52cfe7b77fe934284a456bf3f5a0c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b8d659d65075bd42934d1cedff68a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: ef3261b5f2b76dd40a30ec3fd1ef8b4d, type: 2}
@@ -2732,9 +2732,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hier komt dus een sussy hype splashscreen alleen dat is er nu nog niet
-    dus we wachten even en hierna verschijnt dan het Titelscherm. Tja het is nu gewoon
-    eventjes stil maar dan komt hier een coole splashscreen
+  m_Text: 'LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM
+    LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM
+    IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM '
 --- !u!222 &1136536047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3755,7 +3755,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1660424614
 GameObject:
   m_ObjectHideFlags: 0

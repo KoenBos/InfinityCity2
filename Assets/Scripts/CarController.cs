@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CarController : MonoBehaviour
 {
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
-
 
     private float horizontalInput;
     private float verticalInput;
@@ -16,6 +16,11 @@ public class CarController : MonoBehaviour
     private bool isBreaking;
 
     private GetInCar getInCarScript;
+    public float carMaxSpeed = 100;
+    public float carCurrentSpeed = 0;
+
+    Rigidbody rb;
+    public static CarController cc;
 
     [SerializeField] private float motorForce;
     [SerializeField] private float breakForce;
@@ -35,6 +40,8 @@ public class CarController : MonoBehaviour
     {
         getInCarScript = GameObject.Find("script-object").GetComponent<GetInCar>();
 
+        cc = this;
+        rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -46,12 +53,16 @@ public class CarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+
+        Debug.Log(carCurrentSpeed);
     }
 
     private void HandleMotor()
     {
         rearLeftWheelCollider.motorTorque = verticalInput * motorForce;
         rearRightWheelCollider.motorTorque = verticalInput * motorForce;
+
+        carCurrentSpeed = (rb.velocity.magnitude * 3.6f) / carMaxSpeed;
 
         breakForce = isBreaking ? 30000 : 0f;
         if (isBreaking)
