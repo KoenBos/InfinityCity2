@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CarController : MonoBehaviour
 {
@@ -21,6 +23,8 @@ public class CarController : MonoBehaviour
 
     Rigidbody rb;
     public static CarController cc;
+
+    public Text speedText;
 
     [SerializeField] private float motorForce;
     [SerializeField] private float breakForce;
@@ -54,7 +58,7 @@ public class CarController : MonoBehaviour
         HandleSteering();
         UpdateWheels();
 
-        Debug.Log(carCurrentSpeed);
+        speedText.text = carCurrentSpeed.ToString();
     }
 
     private void HandleMotor()
@@ -64,11 +68,9 @@ public class CarController : MonoBehaviour
 
         carCurrentSpeed = (rb.velocity.magnitude * 3.6f) / carMaxSpeed;
 
-        breakForce = isBreaking ? 30000 : 0f;
-        if (isBreaking)
-        {
-            ApplyBreaking();
-        }
+        currentBreakForce = isBreaking ? breakForce : 0f;
+
+        ApplyBreaking();
     }
 
     private void ApplyBreaking()
