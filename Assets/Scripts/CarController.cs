@@ -20,6 +20,7 @@ public class CarController : MonoBehaviour
     public float carCurrentSpeed = 0;
 
     Rigidbody rb;
+    Transform trans;
     public static CarController cc;
 
     [SerializeField] private float motorForce;
@@ -57,6 +58,11 @@ public class CarController : MonoBehaviour
         Debug.Log(carCurrentSpeed);
     }
 
+    void Unflip()
+    {
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, trans.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+    }
+
     private void HandleMotor()
     {
         rearLeftWheelCollider.motorTorque = verticalInput * motorForce;
@@ -64,10 +70,11 @@ public class CarController : MonoBehaviour
 
         carCurrentSpeed = (rb.velocity.magnitude * 3.6f) / carMaxSpeed;
 
-        breakForce = isBreaking ? 30000 : 0f;
+        currentBreakForce = isBreaking ? breakForce : 0f;
         if (isBreaking)
         {
             ApplyBreaking();
+            Debug.Log("break111");
         }
     }
 
