@@ -11,7 +11,7 @@ public class PlayerInventory : MonoBehaviour
    [SerializeField]
    public int NumberOfEels { get; private set; }
    
-   public GameObject particleSystem;
+   public GameObject pparticleSystem;
 
    public UnityEvent<PlayerInventory> OnEelCollected;
 
@@ -51,13 +51,13 @@ public class PlayerInventory : MonoBehaviour
         
        NumberOfEels--;
        OnEelCollected.Invoke(this);
-       particleSystem.SetActive(true);
+       pparticleSystem.SetActive(true);
        Generator.TriggerGenerator();
        
        }
        else 
        {
-        particleSystem.SetActive(false);
+        pparticleSystem.SetActive(false);
        }
    }
 
