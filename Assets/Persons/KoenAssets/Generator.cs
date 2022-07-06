@@ -42,6 +42,7 @@ public class Generator : MonoBehaviour
     public GameObject door1;
     public GameObject door2;
     public GameObject door3;
+     public GameObject congratsPanel;
     
 
     public PlayerInventory PlayerInventory;
@@ -144,6 +145,9 @@ public class Generator : MonoBehaviour
        {
         Lamp4R4.SetActive(false);
         Lamp4G4.SetActive(true);
+        congratsPanel.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
        }
        
    }
