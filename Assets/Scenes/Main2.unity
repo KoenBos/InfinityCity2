@@ -26839,11 +26839,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3384067014809639757, guid: 5b781e6ca2ab06046865572dacb8f636, type: 3}
       propertyPath: speed
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3384067014809639757, guid: 5b781e6ca2ab06046865572dacb8f636, type: 3}
       propertyPath: runSpeed
-      value: 12
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3384515268931526325, guid: 5b781e6ca2ab06046865572dacb8f636, type: 3}
       propertyPath: m_Enabled
